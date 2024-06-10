@@ -8,7 +8,7 @@ import SignupFields from '../../SignupFields/SignupFields';
 import Button from '../../Button/Button';
 import { useTranslation } from 'react-i18next';
 
-const Signup = () => {
+const Signup = ({navigation}) => {
   const { t } = useTranslation();
   return (
     <ImageBackground source={img1} style={styles.backgroundImage}>
@@ -22,10 +22,11 @@ const Signup = () => {
     </View>
     <View style={styles.footer}>
     <Button
+    onPress={()=>navigation.navigate("Login")}
      title="Signup"/>
      <View style={{marginTop:20}}>
      <Text style={{ fontFamily: "Roboto-Bold", color: "#fff", fontSize: 16 }}>
-                {t('alreadyHaveAccount')} <Text style={{ color: "blue" }}>{t('loginHere')}</Text>
+                {t('alreadyHaveAccount')} <Text onPress={navigation.navigate('Login')} style={{ color: "blue" }}>{t('loginHere')}</Text>
               </Text>
      </View>
     </View>
