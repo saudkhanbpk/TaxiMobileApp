@@ -37,7 +37,15 @@ const resources = {
       enterTaxiNumber: 'Enter Taxi Number',
       signup: 'Signup',
       alreadyHaveAccount: 'Already have an account?',
-      loginHere: 'Login Here'
+      loginHere: 'Login Here',
+      letsgetsStarted:"Let Get Started",
+      signIn:"SignIn",
+      forgotPass:"Forgot Password?",
+      titleforgotPass:"Forgot Password",
+      checkEmail:"Check Your Email",
+      send:"Send",
+      areNew:"Are you New?",
+      backtoSignin:'Back TO Sign in'
     },
   },
   es: {
@@ -52,32 +60,24 @@ const resources = {
       password: 'Contraseña',
       enterPassword: 'Ingrese su contraseña',
       selectTaxiCompany: 'Seleccionar empresa de taxis',
+      selectCompany: 'seleccionar empresa',
       taxiNumber: 'Número de taxi',
       enterTaxiNumber: 'Ingrese el número de taxi',
-      signup: 'Registrarse',
+      signup: 'inscribirse',
       alreadyHaveAccount: '¿Ya tienes una cuenta?',
-      loginHere: 'Iniciar sesión aquí'
+      loginHere: 'Iniciar sesión aquí',
+      letsgetsStarted:"Comencemos",
+      signIn:"acceso",
+      forgotPass:'¿Has olvidado tu contraseña?',
+      titleforgotPass:'Has olvidado tu contraseña',
+      checkEmail:"revisa tu correo electrónico",
+      send:"enviar",
+      areNew:"Eres nuevo?",
+      backtoSignin:'atrás para iniciar sesión'
+      
     },
   },
-  ur: {
-    translation: {
-      welcome: 'خوش آمدید',
-      changeLanguage: 'زبان تبدیل کریں',
-      createAccount: 'کھاتا کھولیں',
-      fullName: 'پورا نام',
-      enterFullName: 'اپنا پورا نام درج کریں',
-      email: 'ای میل',
-      enterEmail: 'اپنی ای میل درج کریں',
-      password: 'پاس ورڈ',
-      enterPassword: 'اپنا پاس ورڈ درج کریں',
-      selectTaxiCompany: 'ٹیکسی کمپنی کا انتخاب کریں',
-      taxiNumber: 'ٹیکسی نمبر',
-      enterTaxiNumber: 'ٹیکسی نمبر درج کریں',
-      signup: 'سائن اپ کریں',
-      alreadyHaveAccount: 'کیا آپ کے پاس پہلے سے اکاؤنٹ ہے؟',
-      loginHere: 'یہاں لاگ ان کریں'
-    },
-  },
+  
   ar: {
     translation: {
       welcome: 'أهلاً وسهلاً',

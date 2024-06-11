@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { StyleSheet, Text, View,ImageBackground,KeyboardAvoidingView ,Platform} from 'react-native';
+import { StyleSheet, Text, View,ImageBackground,KeyboardAvoidingView ,Platform,TouchableOpacity} from 'react-native';
 import LanguageSelector from '../../LanguageSelector/LanguageSelector';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import img1 from "../../../assets/Images/bg-image.jpg";
@@ -19,17 +19,19 @@ const Signup = ({navigation}) => {
     </View>
     <View style={styles.createAcc}>
         <SignupFields />
-    </View>
-    <View style={styles.footer}>
+
+        <View style={styles.footer}>
     <Button
-    onPress={()=>navigation.navigate("Login")}
-     title="Signup"/>
+     onPress={() => navigation.navigate('login')}
+     title={t('signup')}/>
      <View style={{marginTop:20}}>
      <Text style={{ fontFamily: "Roboto-Bold", color: "#fff", fontSize: 16 }}>
-                {t('alreadyHaveAccount')} <Text onPress={navigation.navigate('Login')} style={{ color: "blue" }}>{t('loginHere')}</Text>
+                {t('alreadyHaveAccount')} <Text onPress={()=>{navigation.navigate('login')}} style={{ color: "blue" }}>{t('loginHere')}</Text>
               </Text>
      </View>
     </View>
+    </View>
+   
     </KeyboardAvoidingView>
     </SafeAreaView>
     
@@ -51,18 +53,21 @@ const styles = StyleSheet.create({
     flex: 1, 
   },
   dropdown:{
-   flex:0.5,
+  flex:0.7,
     alignItems:"flex-end",
-  
 
   },
   createAcc:{
-    alignItems:"center"
+    alignItems:"center",
+    flex:4,
+  
+
   },
   footer:{
     alignItems:"center",
     justifyContent:"center",
-    flex:1
+    marginTop:30
+ 
     
     
    

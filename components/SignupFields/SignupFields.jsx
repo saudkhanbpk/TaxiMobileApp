@@ -8,7 +8,6 @@ const SignupFields = () => {
   const { t } = useTranslation();
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
-    const [phone, setPhone] = useState('');
     const [password, setPassword] = useState('');
     const [selectedValue, setSelectedValue] = useState(null);
 
@@ -26,7 +25,7 @@ const SignupFields = () => {
       <Text style={{ textAlign: "center", fontFamily: "Roboto-Bold", fontSize: 35, fontWeight: "700", color: "white" }}>
         {t('createAccount')}
       </Text>
-      <View>
+      <View style={{marginTop:30}}>
       <CustomTextInput
           label={t('fullName')}
           value={name}
