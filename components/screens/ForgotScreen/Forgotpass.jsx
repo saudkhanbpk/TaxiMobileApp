@@ -1,4 +1,4 @@
-import { View, Text, ImageBackground,StyleSheet,SafeAreaView,KeyboardAvoidingView,TouchableOpacity,Image } from 'react-native'
+import { View, Text, ImageBackground,StyleSheet,SafeAreaView,KeyboardAvoidingView,TouchableOpacity,Image,Alert } from 'react-native'
 import {React,useState} from 'react'
 import CheckBox from 'react-native-check-box'
 import CustomTextInput from '../../CustomTextInput/CustomTextInput';
@@ -6,6 +6,8 @@ import img1 from "../../../assets/Images/bg-image.jpg";
 import img2 from "../../../assets/Images/backbtn.png"
 import Icon from "react-native-vector-icons/FontAwesome"
 import Button from '../../Button/Button';
+import {sendPasswordResetOTP} from '../../../api/apiServices';
+import {setAsyncStorageItem} from "../../../storage/asyncStorage";
 
 import { useTranslation } from 'react-i18next';
 
@@ -13,6 +15,27 @@ const Forgotpass = ({navigation}) => {
     const [email, setEmail] = useState('');
     const [isChecked, setIsChecked] = useState(false);
     const { t } = useTranslation();
+
+    const handleForgotPassword = async () => {
+      try {
+          const response = await sendPasswordResetOTP(email);
+          console.log(response);
+          if (response && response.success) {
+              if (response.token) {
+                  await setAsyncStorageItem('token', response.token);
+              }
+              Alert.alert("Success", response.message, [
+                  { text: 'OK', onPress: () => navigation.navigate('verification') }
+              ]);
+          } else {
+              Alert.alert("Error", response.message);
+          }
+      } catch (error) {
+          console.error(error);
+          Alert.alert("Error", "An error occurred while sending the password reset email.");
+      }
+  };
+
 
    
   return (
@@ -49,7 +72,7 @@ const Forgotpass = ({navigation}) => {
               <View style={styles.btncon}>
                 <Button 
                     title={t('send')}
-                    onPress={()=>navigation.navigate('verification')}
+                    onPress={handleForgotPassword}
                 />
               </View>
 

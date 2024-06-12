@@ -6,10 +6,12 @@ import img1 from "../../../assets/Images/bg-image.jpg";
 import img2 from "../../../assets/Images/backbtn.png"
 import Icon from "react-native-vector-icons/FontAwesome"
 import Button from '../../Button/Button';
+import { useTranslation } from 'react-i18next';
 
 const Newpassword = ({navigation}) => {
     const [password, setPassword] = useState('');
     const [newpassword, setNewPassword] = useState('');
+    const { t } = useTranslation();
  
    
   return (
@@ -21,40 +23,40 @@ const Newpassword = ({navigation}) => {
     </TouchableOpacity>
 
     <View style={styles.forgottxt}>
-        <Text style={{fontFamily:"Roboto-Bold",fontSize:35,color:"white",textAlign:"center"}}>New password</Text>
+        <Text style={{fontFamily:"Roboto-Bold",fontSize:35,color:"white",textAlign:"center"}}> {t('newpassword')}</Text>
     </View>
     </View>
 
     <View style={styles.main}>
     <CustomTextInput
-          label="New Password"
+          label={t('newpassword')}
           value={password}
           onChangeText={setPassword}
-          placeholder="Enter New Password"
+          placeholder={t('enternewPass')}
           secureTextEntry={true}
         />
         <CustomTextInput
-          label="Confirm Password"
+          label={t('confirmPass')}
           value={newpassword}
           onChangeText={setNewPassword}
-          placeholder="Enter Confirm Password"
+          placeholder={t('enterconfirmPass')}
           secureTextEntry={true}
         />
       
 
               <View style={styles.btncon}>
                 <Button 
-                    title="Send"
+                    title={t('send')}
                     onPress={()=>navigation.navigate('verification')}
                 />
               </View>
 
               <View style={styles.footer}>
     <View>
-    <Text style={{color:"white",fontFamily:"Roboto-Bold",fontSize:16}}>Are You New?<Text style={{color:"blue",}} onPress={()=>navigation.navigate("signup")}>Create An Account</Text></Text>
+    <Text style={{color:"white",fontFamily:"Roboto-Bold",fontSize:16}}>{t('areNew')}<Text style={{color:"blue",}} onPress={()=>navigation.navigate("signup")}>{t('createAccount')}</Text></Text>
     </View>
     <View>
-        <Text style={{color:"blue",fontFamily:"Roboto-Bold"}} onPress={()=>navigation.navigate("login")}>Back To Sign in</Text>
+        <Text style={{color:"blue",fontFamily:"Roboto-Bold"}} onPress={()=>navigation.navigate("login")}>{t('backtoSignin')}</Text>
     </View>
 
     </View> 

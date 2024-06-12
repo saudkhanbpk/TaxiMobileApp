@@ -1,19 +1,37 @@
-
 import React, { useState } from 'react';
-import { StyleSheet, Text, View,ImageBackground,KeyboardAvoidingView ,Platform,TouchableOpacity} from 'react-native';
+import { StyleSheet, Text, View,ImageBackground,KeyboardAvoidingView ,Platform,TouchableOpacity,Alert} from 'react-native';
 import LanguageSelector from '../../LanguageSelector/LanguageSelector';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import img1 from "../../../assets/Images/bg-image.jpg";
-import SignupFields from '../../SignupFields/SignupFields';
 import Button from '../../Button/Button';
 import { useTranslation } from 'react-i18next';
 import CustomTextInput from '../../CustomTextInput/CustomTextInput';
+import {login} from '../../../api/apiServices';
+import {setAsyncStorageItem} from "../../../storage/asyncStorage";
 
 const Login = ({navigation}) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
   const { t } = useTranslation();
+
+  const handleLogin = async () => {
+    try {
+      const userData = { email, password };
+      const response = await login(userData);
+    
+      console.log(response);
+      if (response && response.token) {
+        
+        await setAsyncStorageItem('token', response.token);
+       
+      navigation.navigate('tabNavigation')
+      }
+    } catch (error) {
+      console.error(error);
+     console.log("error")
+    }
+  };
   return (
     <ImageBackground source={img1} style={styles.backgroundImage}>
     <SafeAreaView style={styles.container}>
@@ -47,7 +65,7 @@ const Login = ({navigation}) => {
 
         <View style={styles.footer}>
     <Button
-     onPress={() => navigation.navigate('login')}
+     onPress={handleLogin}
      title={t('signIn')}/>
      <View style={{marginTop:20}}>
      <Text style={{ fontFamily: "Roboto-Bold", color: "#fff", fontSize: 16 }}>

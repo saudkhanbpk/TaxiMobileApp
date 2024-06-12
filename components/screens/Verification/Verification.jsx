@@ -5,9 +5,12 @@ import img2 from "../../../assets/Images/backbtn.png"
 import OTPinputs from '../../OTPinputs/OTPinputs';
 import Button from '../../Button/Button';
 
+import { useTranslation } from 'react-i18next';
+
 
 
 const Verification = ({navigation}) => {
+  const { t } = useTranslation();
     
   
   return (
@@ -19,7 +22,7 @@ const Verification = ({navigation}) => {
     </TouchableOpacity>
 
     <View style={styles.forgottxt}>
-        <Text style={{fontFamily:"Roboto-Bold",fontSize:35,color:"white",textAlign:"center"}}> Verification </Text>
+        <Text style={{fontFamily:"Roboto-Bold",fontSize:35,color:"white",textAlign:"center"}}> {t('verification')} </Text>
     </View>
     </View>
 
@@ -28,7 +31,7 @@ const Verification = ({navigation}) => {
     <OTPinputs />
     </View>
     <View style={styles.resend}>
-        <Text style={{fontFamily:"Roboto-Bold",color:"white",fontSize:16,}}>If You Didn't Recieve The Code?<Text style={{color:"blue"}} onPress={()=>navigation.navigate("forgotpass")}>Resend</Text></Text>
+        <Text style={{fontFamily:"Roboto-Bold",color:"white",fontSize:16,}}> {t('ifyounotRecieve')}<Text style={{color:"blue"}} onPress={()=>navigation.navigate("forgotpass")}> {t('resend')}</Text></Text>
 
     </View>
 
@@ -41,10 +44,10 @@ const Verification = ({navigation}) => {
     <View>
     <View style={styles.footer}>
     
-    <Text style={{color:"white",fontFamily:"Roboto-Bold",fontSize:16}}>Are You New?<Text style={{color:"blue"}} onPress={()=>navigation.navigate("signup")}>Create An Account</Text></Text>
+    <Text style={{color:"white",fontFamily:"Roboto-Bold",fontSize:16}}> {t('areNew')}<Text style={{color:"blue"}} onPress={()=>navigation.navigate("signup")}> {t('createAccount')}</Text></Text>
     
     <View>
-        <Text style={{color:"blue",fontFamily:"Roboto-Bold"}} onPress={()=>navigation.navigate("login")}>Back To Sign in</Text>
+        <Text style={{color:"blue",fontFamily:"Roboto-Bold"}} onPress={()=>navigation.navigate("login")}> {t('backtoSignin')}</Text>
     </View>
     </View>
 

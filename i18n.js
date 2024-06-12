@@ -8,12 +8,13 @@ import 'intl/locale-data/jsonp/ar';
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import HttpBackend from 'i18next-http-backend';
+import Newpassword from './components/screens/Newpassword/Newpassword';
 
 const languageDetector = {
   type: 'languageDetector',
   async: true,
   detect: (callback) => {
-    const language = 'en'; 
+    const language = 'es'; 
     callback(language);
   },
   init: () => {},
@@ -45,8 +46,17 @@ const resources = {
       checkEmail:"Check Your Email",
       send:"Send",
       areNew:"Are you New?",
-      backtoSignin:'Back TO Sign in'
-    },
+      backtoSignin:'Back TO Sign in',
+      verification:"Verification",
+      enterVerification:"Enter Verification Code",
+      ifyounotRecieve:"If you didn't recieve the code?",
+      resend:'Resend',
+      newpassword:"New Password",
+      enternewPass:"Enter New Password",
+      confirmPass:'Confirm Password',
+      enterconfirmPass:'Enter Confirm Password'
+
+        },
   },
   es: {
     translation: {
@@ -73,7 +83,15 @@ const resources = {
       checkEmail:"revisa tu correo electrónico",
       send:"enviar",
       areNew:"Eres nuevo?",
-      backtoSignin:'atrás para iniciar sesión'
+      backtoSignin:'atrás para iniciar sesión',
+      verification:'Verificación',
+      enterVerification:'Ingrese el código de verificación',
+      ifyounotRecieve:'¿Si no recibiste el código?',
+      resend:'Reenviar',
+      newpassword:'Nueva contraseña',
+      enternewPass:'Ingrese nueva clave',
+      confirmPass:'confirmar Contraseña',
+      enterconfirmPass:'Ingrese Confirmar Contraseña'
       
     },
   },
@@ -105,7 +123,7 @@ i18n
   .use(initReactI18next)
   .init({
     resources,
-    fallbackLng: 'en',
+    fallbackLng: 'es',
     interpolation: {
       escapeValue: false,
     },

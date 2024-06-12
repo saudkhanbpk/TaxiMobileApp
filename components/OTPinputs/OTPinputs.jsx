@@ -1,6 +1,7 @@
 import { View, Text,SafeAreaView,Image,ImageBackground ,StyleSheet} from 'react-native'
 import {React,useState} from 'react'
 import img1 from "../../assets/Images/bg-image.jpg";
+import { useTranslation } from 'react-i18next';
 
 import {
     CodeField,
@@ -11,7 +12,7 @@ import {
 
 
 const OTPinputs = () => {
-
+  const { t } = useTranslation();
     const CELL_COUNT = 4;
     const [value, setValue] = useState('');
     const ref = useBlurOnFulfill({value, cellCount: CELL_COUNT});
@@ -21,7 +22,7 @@ const OTPinputs = () => {
     });
   return (
     <SafeAreaView style={styles.root}>
-    <Text style={{color:"white",textAlign:"center",fontFamily:"Roboto-Bold", fontSize:22}}>Enter Verification Code</Text>
+    <Text style={{color:"white",textAlign:"center",fontFamily:"Roboto-Bold", fontSize:22}}>{t('enterVerification')}</Text>
       <CodeField
         ref={ref}
         {...props}

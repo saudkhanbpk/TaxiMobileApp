@@ -1,0 +1,5 @@
+export const LOGIN = '/auth/login';
+export const REGISTER = '/auth/signup';
+export const sendUserPasswordResetOTP = '/auth/sendOtp';
+// export const GET_USER = '/user';
+// export const UPDATE_USER = '/user/update';
