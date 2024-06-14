@@ -28,6 +28,20 @@ export const sendPasswordResetOTP = async (email) => {
       throw error.response ? error.response.data : new Error('Network error');
   }
 };
+
+export const confirmPasswordResetOTP = async (email, otp) => {
+  console.log("🚀 ~ confirmPasswordResetOTP ~ email:", email, otp)
+  try {
+      const response = await axiosInstance.post(ApiRoutes.confirmUserPasswordResetOTP, { email, otp });
+      return response.data;
+      
+  } catch (error) {
+      console.error('Error confirming password reset OTP:', error);
+      throw error.response ? error.response.data : new Error('Network error');
+  }
+};
+
+
 export const getUser = async () => {
   try {
     const response = await axiosInstance.get(ApiRoutes.GET_USER);

@@ -11,10 +11,10 @@ import {
   } from 'react-native-confirmation-code-field';
 
 
-const OTPinputs = () => {
+const OTPinputs = ({value, setValue}) => {
   const { t } = useTranslation();
     const CELL_COUNT = 4;
-    const [value, setValue] = useState('');
+    // const [value, setValue] = useState('');
     const ref = useBlurOnFulfill({value, cellCount: CELL_COUNT});
     const [props, getCellOnLayoutHandler] = useClearByFocusCell({
       value,

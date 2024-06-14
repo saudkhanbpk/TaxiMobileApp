@@ -9,6 +9,8 @@ import Forgotpass from '../ForgotScreen/Forgotpass';
 import Verification from '../Verification/Verification';
 import Newpassword from '../Newpassword/Newpassword';
 import TabNavigation from '../TabNavigation/TabNavigation';
+import Home from '../HomeScreen/Home';
+import Report from '../ReportScreen/Report';
 
 
 
@@ -25,6 +27,8 @@ const NavigationRoutes = () => {
       <Stack.Screen name="verification" component={Verification} />
       <Stack.Screen name="newpassword" component={Newpassword} />
       <Stack.Screen name="tabNavigation" component={TabNavigation} />
+      <Stack.Screen name="home" component={Home} />
+      <Stack.Screen name="report" component={Report} />
     </Stack.Navigator>
   </NavigationContainer>
   )

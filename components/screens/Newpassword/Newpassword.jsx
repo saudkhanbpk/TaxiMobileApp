@@ -47,7 +47,7 @@ const Newpassword = ({navigation}) => {
               <View style={styles.btncon}>
                 <Button 
                     title={t('send')}
-                    onPress={()=>navigation.navigate('verification')}
+                    onPress={()=>navigation.navigate('login')}
                 />
               </View>
 

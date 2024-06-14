@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { SafeAreaView, View, StyleSheet, Image, ImageBackground, Animated } from 'react-native';
-import logo from "../../../assets/Images/AppLogo.png";
+import logo from "../../../assets/Images/wLogo.png";
 import img1 from "../../../assets/Images/bg-image.jpg";
 
 const Splash = ({ navigation }) => {
@@ -39,15 +39,15 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   logocont: {
-    height: 300,
-    width: 300,
+    height: 350,
+    width: 350,
     backgroundColor: "#0D1525",
     alignItems: "center",
     borderRadius: 500,
     justifyContent: "center",
   },
   Logoimage: {
-    width: 160,
+    width: 170,
     height: 195,
   },
 });

@@ -4,15 +4,61 @@ import img1 from "../../../assets/Images/bg-image.jpg"
 import img2 from "../../../assets/Images/backbtn.png"
 import OTPinputs from '../../OTPinputs/OTPinputs';
 import Button from '../../Button/Button';
+import {confirmPasswordResetOTP} from '../../../api/apiServices';
+
 
 import { useTranslation } from 'react-i18next';
 
 
-
 const Verification = ({navigation}) => {
   const { t } = useTranslation();
-    
   
+  const [email,setEmail]=useState('')
+  const [otp, setOtp] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  const handleOTPChange = (otpValue) => {
+    setOtp(otpValue);
+  };
+
+  // const handleSubmit = async () => {
+  //   setLoading(true);
+  //   setError(null);
+
+  //   try {
+  //     const response = await confirmPasswordResetOTP(email, otp);
+  //     setLoading(false);
+  //     if (response.success) {
+  //       Alert.alert(t('Success'), t('Password reset successful'), [{ text: t('OK'), onPress: () => navigation.navigate('newpassword') }]);
+  //     } else {
+  //       setError(response.message || t('An error occurred'));
+  //     }
+  //   } catch (err) {
+  //     setLoading(false);
+  //     setError(err.message || t('An error occurred'));
+  //   }
+  // };
+  const handleSubmit = async () => {
+    try {
+        const response = await confirmPasswordResetOTP(email,otp);
+        console.log(response);
+        if (response && response.success) {
+            if (response.token) {
+                await setAsyncStorageItem('token', response.token);
+            }
+            Alert.alert("Success", response.message, [  
+                { text: 'OK', onPress: () => navigation.navigate('newpassword') }
+            ]);
+        } else {
+            Alert.alert("Error", response.message);
+        }
+    } catch (error) {
+        console.error(error);
+        Alert.alert("Error", "An error occurred while sending the password reset email.");
+    }
+};
+
   return (
     <ImageBackground source={img1} style={styles.backgroundImage}>
      <SafeAreaView style={styles.container}>
@@ -28,7 +74,7 @@ const Verification = ({navigation}) => {
 
     <View style={styles.main}>
     <View>
-    <OTPinputs />
+    <OTPinputs  value={otp} setValue={setOtp}/>
     </View>
     <View style={styles.resend}>
         <Text style={{fontFamily:"Roboto-Bold",color:"white",fontSize:16,}}> {t('ifyounotRecieve')}<Text style={{color:"blue"}} onPress={()=>navigation.navigate("forgotpass")}> {t('resend')}</Text></Text>
@@ -36,7 +82,7 @@ const Verification = ({navigation}) => {
     </View>
 
     <View style={styles.btncon}>
-    <Button onPress={()=>navigation.navigate('newpassword')}
+    <Button onPress={handleSubmit}
         title="Send"
     />
     </View>
