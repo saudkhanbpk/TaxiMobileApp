@@ -1,5 +1,5 @@
 import axiosInstance from './axios';
-import * as ApiRoutes from "../../TaxiApp/api/apiRoutes"
+import * as ApiRoutes from './apiRoutes';
 
 export const login = async (userData) => {
   try {

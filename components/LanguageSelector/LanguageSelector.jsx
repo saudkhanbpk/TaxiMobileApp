@@ -1,23 +1,26 @@
-import React, { useState } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { useTranslation } from 'react-i18next';
+import React, {useState} from 'react';
+import {StyleSheet, Text, View} from 'react-native';
+import {useTranslation} from 'react-i18next';
 import '../../i18n';
-import { Dropdown } from 'react-native-element-dropdown';
+import {Dropdown} from 'react-native-element-dropdown';
 import AntDesign from 'react-native-vector-icons/AntDesign';
-import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
 
 const languages = [
-  { label: 'English', value: 'en' },
-  { label: 'Español', value: 'es' },
-  { label: 'العربية', value: 'ar' },
+  {label: 'English', value: 'en'},
+  {label: 'Español', value: 'es'},
+  {label: 'العربية', value: 'ar'},
 ];
 
 const LanguageSelector = () => {
-  const { t, i18n } = useTranslation();
+  const {t, i18n} = useTranslation();
   const [currentLanguage, setCurrentLanguage] = useState(i18n.language);
   const [isFocus, setIsFocus] = useState(false);
 
-  const changeLanguage = (lng) => {
+  const changeLanguage = lng => {
     i18n.changeLanguage(lng);
     setCurrentLanguage(lng);
   };
@@ -25,7 +28,7 @@ const LanguageSelector = () => {
   return (
     <View style={styles.container}>
       <Dropdown
-        style={[styles.dropdown, isFocus && { borderColor: 'blue' }]}
+        style={[styles.dropdown, isFocus && {borderColor: 'blue'}]}
         placeholderStyle={styles.placeholderStyle}
         selectedTextStyle={styles.selectedTextStyle}
         inputSearchStyle={styles.inputSearchStyle}
@@ -40,7 +43,7 @@ const LanguageSelector = () => {
         value={currentLanguage}
         onFocus={() => setIsFocus(true)}
         onBlur={() => setIsFocus(false)}
-        onChange={(item) => {
+        onChange={item => {
           changeLanguage(item.value);
           setIsFocus(false);
         }}
@@ -53,7 +56,6 @@ const LanguageSelector = () => {
           />
         )}
       />
-      
     </View>
   );
 };
@@ -70,30 +72,30 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     paddingHorizontal: 6,
     width: wp(50),
-    backgroundColor: 'black', 
+    backgroundColor: 'black',
   },
   icon: {
     marginRight: 5,
   },
   placeholderStyle: {
     fontSize: 20,
-    color: 'white', 
-    fontFamily:"Roboto-Bold"
+    color: 'white',
+    fontFamily: 'Roboto-Bold',
   },
   selectedTextStyle: {
     fontSize: 18,
-    color: 'white', 
-    fontFamily:"Roboto-Bold"
+    color: 'white',
+    fontFamily: 'Roboto-Bold',
   },
   iconStyle: {
     width: 24,
     height: 24,
-    color:"#fff"
+    color: '#fff',
   },
   inputSearchStyle: {
     height: 40,
     fontSize: 16,
-    color: 'white', 
+    color: 'black',
   },
 });
 
