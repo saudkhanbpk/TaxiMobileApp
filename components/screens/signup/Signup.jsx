@@ -1,15 +1,52 @@
-
 import React, { useState } from 'react';
-import { StyleSheet, Text, View,ImageBackground,KeyboardAvoidingView ,Platform} from 'react-native';
+import { StyleSheet, Text, View,ImageBackground,KeyboardAvoidingView ,Platform,TouchableOpacity} from 'react-native';
 import LanguageSelector from '../../LanguageSelector/LanguageSelector';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import img1 from "../../../assets/Images/bg-image.jpg";
-import SignupFields from '../../SignupFields/SignupFields';
 import Button from '../../Button/Button';
+import CustomTextInput from '../../CustomTextInput/CustomTextInput';
+import CustomDropdown from "../../../components/CustomDropdown/CustomDropdown"
 import { useTranslation } from 'react-i18next';
+import {register} from '../../../api/apiServices';
+import {setAsyncStorageItem} from "../../../storage/asyncStorage";
 
 const Signup = ({navigation}) => {
   const { t } = useTranslation();
+  const [fullName, setfullName] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [selectCompany, setSelectedCompany] = useState(null);
+    const [taxiNumber, settaxiNumber] = useState('');
+
+
+    const items = [
+        { label: 'Option 1', value: 'option1' },
+        { label: 'Option 2', value: 'option2' },
+        { label: 'Opt', value: 'option3' },
+      ];
+      const handleChange = (item) => {
+        setSelectedCompany(item.value);
+      };
+
+  const handleSignup = async () => {
+    try {
+      const userData = { fullName, email,password ,selectCompany,taxiNumber};
+      const response = await register(userData);
+     
+      console.log(response);
+      if (response && response.token) {
+        
+        await setAsyncStorageItem('token', response.token);
+       
+        navigation.navigate('login'); 
+        
+      }
+    } catch (error) {
+      console.error(error);
+      
+    }
+  };
+
   return (
     <ImageBackground source={img1} style={styles.backgroundImage}>
     <SafeAreaView style={styles.container}>
@@ -18,18 +55,58 @@ const Signup = ({navigation}) => {
       <LanguageSelector /> 
     </View>
     <View style={styles.createAcc}>
-        <SignupFields />
-    </View>
-    <View style={styles.footer}>
+      <Text style={{ textAlign: "center", fontFamily: "Roboto-Bold", fontSize: 35, fontWeight: "700", color: "white" }}>
+        {t('createAccount')}
+      </Text>
+      <View style={{marginTop:20}}>
+      <CustomTextInput
+          label={t('fullName')}
+          value={fullName}
+          onChangeText={setfullName}
+          placeholder={t('enterFullName')}
+        />
+        <CustomTextInput
+          label={t('email')}
+          value={email}
+          onChangeText={setEmail}
+          placeholder={t('enterEmail')}
+        />
+        <CustomTextInput
+          label={t('password')}
+          value={password}
+          onChangeText={setPassword}
+          placeholder={t('enterPassword')}
+          secureTextEntry={true}
+        />
+        <CustomDropdown
+          label={t('selectTaxiCompany')}
+          data={items}
+          value={selectCompany}
+          onChangeText={setSelectedCompany}
+          onChange={handleChange}
+        />
+        <CustomTextInput
+          label={t('taxiNumber')}
+          value={taxiNumber}
+          onChangeText={settaxiNumber}
+          placeholder={t('enterTaxiNumber')}
+        />
+      
+      </View>
+ 
+
+        <View style={styles.footer}>
     <Button
-    onPress={()=>navigation.navigate("Login")}
-     title="Signup"/>
+     onPress={handleSignup}
+     title={t('signup')}/>
      <View style={{marginTop:20}}>
      <Text style={{ fontFamily: "Roboto-Bold", color: "#fff", fontSize: 16 }}>
-                {t('alreadyHaveAccount')} <Text onPress={navigation.navigate('Login')} style={{ color: "blue" }}>{t('loginHere')}</Text>
+                {t('alreadyHaveAccount')} <Text onPress={()=>{navigation.navigate('login')}} style={{ color: "blue" }}>{t('loginHere')}</Text>
               </Text>
      </View>
     </View>
+    </View>
+   
     </KeyboardAvoidingView>
     </SafeAreaView>
     
@@ -51,18 +128,20 @@ const styles = StyleSheet.create({
     flex: 1, 
   },
   dropdown:{
-   flex:0.5,
+  flex:0.8,
     alignItems:"flex-end",
-  
 
   },
   createAcc:{
-    alignItems:"center"
+    alignItems:"center",
+    flex:4,
+
   },
   footer:{
     alignItems:"center",
     justifyContent:"center",
-    flex:1
+    marginTop:30
+ 
     
     
    

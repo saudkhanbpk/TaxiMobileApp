@@ -8,12 +8,13 @@ import 'intl/locale-data/jsonp/ar';
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import HttpBackend from 'i18next-http-backend';
+import Newpassword from './components/screens/Newpassword/Newpassword';
 
 const languageDetector = {
   type: 'languageDetector',
   async: true,
   detect: (callback) => {
-    const language = 'en'; 
+    const language = 'es'; 
     callback(language);
   },
   init: () => {},
@@ -37,8 +38,25 @@ const resources = {
       enterTaxiNumber: 'Enter Taxi Number',
       signup: 'Signup',
       alreadyHaveAccount: 'Already have an account?',
-      loginHere: 'Login Here'
-    },
+      loginHere: 'Login Here',
+      letsgetsStarted:"Let Get Started",
+      signIn:"SignIn",
+      forgotPass:"Forgot Password?",
+      titleforgotPass:"Forgot Password",
+      checkEmail:"Check Your Email",
+      send:"Send",
+      areNew:"Are you New?",
+      backtoSignin:'Back TO Sign in',
+      verification:"Verification",
+      enterVerification:"Enter Verification Code",
+      ifyounotRecieve:"If you didn't recieve the code?",
+      resend:'Resend',
+      newpassword:"New Password",
+      enternewPass:"Enter New Password",
+      confirmPass:'Confirm Password',
+      enterconfirmPass:'Enter Confirm Password'
+
+        },
   },
   es: {
     translation: {
@@ -52,32 +70,32 @@ const resources = {
       password: 'Contraseña',
       enterPassword: 'Ingrese su contraseña',
       selectTaxiCompany: 'Seleccionar empresa de taxis',
+      selectCompany: 'seleccionar empresa',
       taxiNumber: 'Número de taxi',
       enterTaxiNumber: 'Ingrese el número de taxi',
-      signup: 'Registrarse',
+      signup: 'inscribirse',
       alreadyHaveAccount: '¿Ya tienes una cuenta?',
-      loginHere: 'Iniciar sesión aquí'
+      loginHere: 'Iniciar sesión aquí',
+      letsgetsStarted:"Comencemos",
+      signIn:"acceso",
+      forgotPass:'¿Has olvidado tu contraseña?',
+      titleforgotPass:'Has olvidado tu contraseña',
+      checkEmail:"revisa tu correo electrónico",
+      send:"enviar",
+      areNew:"Eres nuevo?",
+      backtoSignin:'atrás para iniciar sesión',
+      verification:'Verificación',
+      enterVerification:'Ingrese el código de verificación',
+      ifyounotRecieve:'¿Si no recibiste el código?',
+      resend:'Reenviar',
+      newpassword:'Nueva contraseña',
+      enternewPass:'Ingrese nueva clave',
+      confirmPass:'confirmar Contraseña',
+      enterconfirmPass:'Ingrese Confirmar Contraseña'
+      
     },
   },
-  ur: {
-    translation: {
-      welcome: 'خوش آمدید',
-      changeLanguage: 'زبان تبدیل کریں',
-      createAccount: 'کھاتا کھولیں',
-      fullName: 'پورا نام',
-      enterFullName: 'اپنا پورا نام درج کریں',
-      email: 'ای میل',
-      enterEmail: 'اپنی ای میل درج کریں',
-      password: 'پاس ورڈ',
-      enterPassword: 'اپنا پاس ورڈ درج کریں',
-      selectTaxiCompany: 'ٹیکسی کمپنی کا انتخاب کریں',
-      taxiNumber: 'ٹیکسی نمبر',
-      enterTaxiNumber: 'ٹیکسی نمبر درج کریں',
-      signup: 'سائن اپ کریں',
-      alreadyHaveAccount: 'کیا آپ کے پاس پہلے سے اکاؤنٹ ہے؟',
-      loginHere: 'یہاں لاگ ان کریں'
-    },
-  },
+  
   ar: {
     translation: {
       welcome: 'أهلاً وسهلاً',
@@ -105,7 +123,7 @@ i18n
   .use(initReactI18next)
   .init({
     resources,
-    fallbackLng: 'en',
+    fallbackLng: 'es',
     interpolation: {
       escapeValue: false,
     },

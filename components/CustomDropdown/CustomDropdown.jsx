@@ -2,7 +2,10 @@ import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { Dropdown } from 'react-native-element-dropdown';
 
+import { useTranslation } from 'react-i18next';
+
 const CustomDropdown = ({ label, data, value, onChange }) => {
+  const { t } = useTranslation();
   return (
     <View style={styles.container}>
       <Text style={styles.label}>{label}</Text>
@@ -12,12 +15,12 @@ const CustomDropdown = ({ label, data, value, onChange }) => {
         data={data}
         labelField="label"
         valueField="value"
-        placeholder="Select Company"
+        placeholder= {t('selectCompany')}
         value={value}
         onChange={onChange}
         placeholderStyle={styles.placeholderStyle}
         selectedTextStyle={styles.selectedTextStyle}
-        dropdownPosition="bottom" // Optional: adjust the position of the dropdown
+        dropdownPosition="bottom"
       />
     </View>
   );

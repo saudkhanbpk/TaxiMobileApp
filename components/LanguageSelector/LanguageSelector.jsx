@@ -9,7 +9,6 @@ import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-nativ
 const languages = [
   { label: 'English', value: 'en' },
   { label: 'Español', value: 'es' },
-  { label: 'اردو', value: 'ur' },
   { label: 'العربية', value: 'ar' },
 ];
 
@@ -62,7 +61,6 @@ const LanguageSelector = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-
   },
   text: {
     fontSize: 24,
