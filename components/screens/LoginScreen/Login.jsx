@@ -59,7 +59,7 @@ const Login = ({navigation}) => {
           placeholder={t('enterPassword')}
           secureTextEntry={true}
         />
-        <TouchableOpacity onPress={()=>{navigation.navigate('forgotpass')}} style={{paddingHorizontal:20}}>
+        <TouchableOpacity onPress={()=>{navigation.navigate('home')}} style={{paddingHorizontal:20}}>
         <Text style={{fontFamily:"Roboto-Bold",color:"white",fontSize:16,textAlign:"right"}}>{t('forgotPass')}</Text></TouchableOpacity>
         </View>
 
