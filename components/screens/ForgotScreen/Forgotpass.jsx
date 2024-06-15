@@ -25,7 +25,7 @@ const Forgotpass = ({navigation}) => {
                   await setAsyncStorageItem('token', response.token);
               }
               Alert.alert("Success", response.message, [
-                  { text: 'OK', onPress: () => navigation.navigate('verification') }
+                  { text: 'OK', onPress: () => navigation.navigate('verification', {email:email}) }
               ]);
           } else {
               Alert.alert("Error", response.message);
