@@ -29,15 +29,29 @@ export const sendPasswordResetOTP = async (email) => {
   }
 };
 
+
 export const confirmPasswordResetOTP = async (email, otp) => {
-  console.log("🚀 ~ confirmPasswordResetOTP ~ email:", email, otp)
   try {
-      const response = await axiosInstance.post(ApiRoutes.confirmUserPasswordResetOTP, { email, otp });
+      const response = await axiosInstance.post(ApiRoutes.confirmUserPasswordResetOTP, {email, otp });
       return response.data;
       
   } catch (error) {
       console.error('Error confirming password reset OTP:', error);
       throw error.response ? error.response.data : new Error('Network error');
+  }
+};
+
+
+export const updatePassword = async (email,newPassword) => {
+  try {
+    const response = await axiosInstance.post(ApiRoutes.updateUserPassword, {
+      email:email,
+      newPassword: newPassword,
+    });
+    return response.data;
+  } catch (error) {
+    console.error('Error updating password:', error);
+    throw error.response ? error.response.data : new Error('Network error');
   }
 };
 

@@ -26,19 +26,23 @@ const Forgotpass = ({navigation}) => {
   const [isChecked, setIsChecked] = useState(false);
   const {t} = useTranslation();
 
-  const handleForgotPassword = async () => {
-    try {
-      const response = await sendPasswordResetOTP(email);
-      console.log(response);
-      if (response && response.success) {
-        if (response.token) {
-          await setAsyncStorageItem('token', response.token);
-        }
-        Alert.alert('Success', response.message, [
-          {text: 'OK', onPress: () => navigation.navigate('verification')},
-        ]);
-      } else {
-        Alert.alert('Error', response.message);
+    const handleForgotPassword = async () => {
+      try {
+          const response = await sendPasswordResetOTP(email);
+          console.log(response);
+          if (response && response.success) {
+              if (response.token) {
+                  await setAsyncStorageItem('token', response.token);
+              }
+              Alert.alert("Success", response.message, [
+                  { text: 'OK', onPress: () => navigation.navigate('verification', {email:email}) }
+              ]);
+          } else {
+              Alert.alert("Error", response.message);
+          }
+      } catch (error) {
+          console.error(error);
+          Alert.alert("Error", "An error occurred while sending the password reset email.");
       }
     } catch (error) {
       console.error(error);

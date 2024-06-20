@@ -1,4 +1,4 @@
-import { View, Text, ImageBackground,StyleSheet,SafeAreaView,KeyboardAvoidingView,TouchableOpacity,Image } from 'react-native'
+import { View, Text, ImageBackground,StyleSheet,SafeAreaView,KeyboardAvoidingView,TouchableOpacity,Image,Alert } from 'react-native'
 import {React,useState} from 'react'
 import CheckBox from 'react-native-check-box'
 import CustomTextInput from '../../CustomTextInput/CustomTextInput';
@@ -6,13 +6,32 @@ import img1 from "../../../assets/Images/bg-image.jpg";
 import img2 from "../../../assets/Images/backbtn.png"
 import Icon from "react-native-vector-icons/FontAwesome"
 import Button from '../../Button/Button';
+import { updatePassword } from '../../../api/apiServices';
 import { useTranslation } from 'react-i18next';
 
-const Newpassword = ({navigation}) => {
-    const [password, setPassword] = useState('');
+const Newpassword = ({ navigation, route }) => {
+  const [password, setPassword] = useState('');
+  const {email} =  route.params;
     const [newpassword, setNewPassword] = useState('');
     const { t } = useTranslation();
- 
+
+    const handleSubmit = async () => {
+      try {
+        
+        const response = await updatePassword(email, newpassword);
+  
+        if (response && response.success) {
+          Alert.alert('Success', response.message, [
+            { text: 'OK', onPress: () => navigation.navigate('login') } 
+          ]);
+        } else {
+          Alert.alert('Error', response.message || 'Failed to update password.');
+        }
+      } catch (error) {
+        console.error('Error updating password:', error);
+        Alert.alert('Error', 'An error occurred while updating the password.');
+      }
+    };
    
   return (
         <ImageBackground source={img1} style={styles.backgroundImage}>
@@ -46,8 +65,8 @@ const Newpassword = ({navigation}) => {
 
               <View style={styles.btncon}>
                 <Button 
-                    title={t('send')}
-                    onPress={()=>navigation.navigate('login')}
+                    title={t('Update')}
+                    onPress={handleSubmit}
                 />
               </View>
 
