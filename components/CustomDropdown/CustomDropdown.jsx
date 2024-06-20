@@ -4,7 +4,7 @@ import {Dropdown} from 'react-native-element-dropdown';
 import Icon from 'react-native-vector-icons/MaterialIcons'; // or any other icon library
 import {useTranslation} from 'react-i18next';
 
-const CustomDropdown = ({label, data, value, onChange}) => {
+const CustomDropdown = ({label, data, value, onChange, placeholder}) => {
   const {t} = useTranslation();
   return (
     <View style={styles.container}>
@@ -16,7 +16,7 @@ const CustomDropdown = ({label, data, value, onChange}) => {
         data={data}
         labelField="label"
         valueField="value"
-        placeholder={t('selectCompany')}
+        placeholder={placeholder}
         value={value}
         onChange={onChange}
         placeholderStyle={styles.placeholderStyle}

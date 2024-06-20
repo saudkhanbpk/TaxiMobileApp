@@ -95,6 +95,7 @@ const Signup = ({navigation}) => {
                   data={items}
                   value={selectCompany}
                   onChange={handleChange}
+                  placeholder={t('selectTaxiCompany')}
                 />
                 <CustomTextInput
                   label={t('taxiNumber')}
