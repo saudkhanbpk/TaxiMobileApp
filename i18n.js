@@ -4,17 +4,18 @@ import 'intl/locale-data/jsonp/en';
 import 'intl/locale-data/jsonp/es';
 import 'intl/locale-data/jsonp/ur';
 import 'intl/locale-data/jsonp/ar';
+import 'intl/locale-data/jsonp/sv';
 
 import i18n from 'i18next';
-import { initReactI18next } from 'react-i18next';
+import {initReactI18next} from 'react-i18next';
 import HttpBackend from 'i18next-http-backend';
 import Newpassword from './components/screens/Newpassword/Newpassword';
 
 const languageDetector = {
   type: 'languageDetector',
   async: true,
-  detect: (callback) => {
-    const language = 'es'; 
+  detect: callback => {
+    const language = 'sv';
     callback(language);
   },
   init: () => {},
@@ -39,24 +40,23 @@ const resources = {
       signup: 'Signup',
       alreadyHaveAccount: 'Already have an account?',
       loginHere: 'Login Here',
-      letsgetsStarted:"Let Get Started",
-      signIn:"SignIn",
-      forgotPass:"Forgot Password?",
-      titleforgotPass:"Forgot Password",
-      checkEmail:"Check Your Email",
-      send:"Send",
-      areNew:"Are you New?",
-      backtoSignin:'Back TO Sign in',
-      verification:"Verification",
-      enterVerification:"Enter Verification Code",
-      ifyounotRecieve:"If you didn't recieve the code?",
-      resend:'Resend',
-      newpassword:"New Password",
-      enternewPass:"Enter New Password",
-      confirmPass:'Confirm Password',
-      enterconfirmPass:'Enter Confirm Password'
-
-        },
+      letsgetsStarted: 'Let Get Started',
+      signIn: 'SignIn',
+      forgotPass: 'Forgot Password?',
+      titleforgotPass: 'Forgot Password',
+      checkEmail: 'Check Your Email',
+      send: 'Send',
+      areNew: 'Are you New?',
+      backtoSignin: 'Back TO Sign in',
+      verification: 'Verification',
+      enterVerification: 'Enter Verification Code',
+      ifyounotRecieve: "If you didn't recieve the code?",
+      resend: 'Resend',
+      newpassword: 'New Password',
+      enternewPass: 'Enter New Password',
+      confirmPass: 'Confirm Password',
+      enterconfirmPass: 'Enter Confirm Password',
+    },
   },
   es: {
     translation: {
@@ -76,26 +76,25 @@ const resources = {
       signup: 'inscribirse',
       alreadyHaveAccount: '¿Ya tienes una cuenta?',
       loginHere: 'Iniciar sesión aquí',
-      letsgetsStarted:"Comencemos",
-      signIn:"acceso",
-      forgotPass:'¿Has olvidado tu contraseña?',
-      titleforgotPass:'Has olvidado tu contraseña',
-      checkEmail:"revisa tu correo electrónico",
-      send:"enviar",
-      areNew:"Eres nuevo?",
-      backtoSignin:'atrás para iniciar sesión',
-      verification:'Verificación',
-      enterVerification:'Ingrese el código de verificación',
-      ifyounotRecieve:'¿Si no recibiste el código?',
-      resend:'Reenviar',
-      newpassword:'Nueva contraseña',
-      enternewPass:'Ingrese nueva clave',
-      confirmPass:'confirmar Contraseña',
-      enterconfirmPass:'Ingrese Confirmar Contraseña'
-      
+      letsgetsStarted: 'Comencemos',
+      signIn: 'acceso',
+      forgotPass: '¿Has olvidado tu contraseña?',
+      titleforgotPass: 'Has olvidado tu contraseña',
+      checkEmail: 'revisa tu correo electrónico',
+      send: 'enviar',
+      areNew: 'Eres nuevo?',
+      backtoSignin: 'atrás para iniciar sesión',
+      verification: 'Verificación',
+      enterVerification: 'Ingrese el código de verificación',
+      ifyounotRecieve: '¿Si no recibiste el código?',
+      resend: 'Reenviar',
+      newpassword: 'Nueva contraseña',
+      enternewPass: 'Ingrese nueva clave',
+      confirmPass: 'confirmar Contraseña',
+      enterconfirmPass: 'Ingrese Confirmar Contraseña',
     },
   },
-  
+
   ar: {
     translation: {
       welcome: 'أهلاً وسهلاً',
@@ -112,7 +111,27 @@ const resources = {
       enterTaxiNumber: 'أدخل رقم التاكسي',
       signup: 'اشتراك',
       alreadyHaveAccount: 'هل لديك حساب بالفعل؟',
-      loginHere: 'تسجيل الدخول هنا'
+      loginHere: 'تسجيل الدخول هنا',
+    },
+  },
+  sv: {
+    translation: {
+      welcome: 'Välkommen',
+      changeLanguage: 'Byt språk',
+      createAccount: 'Skapa ett konto',
+      fullName: 'Fullständiga namn',
+      enterFullName: 'Ange ditt fullständiga namn',
+      email: 'E-post',
+      enterEmail: 'Ange din e-post',
+      password: 'Lösenord',
+      enterPassword: 'Ange ditt lösenord',
+      selectTaxiCompany: 'Välj taxiföretag',
+      selectCompany: 'välj företag',
+      taxiNumber: 'Taxinummer',
+      enterTaxiNumber: 'Ange taxinummer',
+      signup: 'Registrera dig',
+      alreadyHaveAccount: 'Har du redan ett konto?',
+      loginHere: 'Logga in här',
     },
   },
 };
