@@ -9,7 +9,7 @@ import {
   Image,
   Alert,
 } from 'react-native';
-import {React, useState} from 'react';
+import React, {useState} from 'react';
 import CheckBox from 'react-native-check-box';
 import CustomTextInput from '../../CustomTextInput/CustomTextInput';
 import img1 from '../../../assets/Images/bg-image.jpg';
@@ -26,23 +26,22 @@ const Forgotpass = ({navigation}) => {
   const [isChecked, setIsChecked] = useState(false);
   const {t} = useTranslation();
 
-    const handleForgotPassword = async () => {
-      try {
-          const response = await sendPasswordResetOTP(email);
-          console.log(response);
-          if (response && response.success) {
-              if (response.token) {
-                  await setAsyncStorageItem('token', response.token);
-              }
-              Alert.alert("Success", response.message, [
-                  { text: 'OK', onPress: () => navigation.navigate('verification', {email:email}) }
-              ]);
-          } else {
-              Alert.alert("Error", response.message);
-          }
-      } catch (error) {
-          console.error(error);
-          Alert.alert("Error", "An error occurred while sending the password reset email.");
+  const handleForgotPassword = async () => {
+    try {
+      const response = await sendPasswordResetOTP(email);
+      console.log(response);
+      if (response && response.success) {
+        if (response.token) {
+          await setAsyncStorageItem('token', response.token);
+        }
+        Alert.alert('Success', response.message, [
+          {
+            text: 'OK',
+            onPress: () => navigation.navigate('verification', {email: email}),
+          },
+        ]);
+      } else {
+        Alert.alert('Error', response.message);
       }
     } catch (error) {
       console.error(error);
@@ -80,7 +79,6 @@ const Forgotpass = ({navigation}) => {
                 color: 'white',
                 textAlign: 'center',
               }}>
-              {' '}
               {t('titleforgotPass')}
             </Text>
           </View>
