@@ -20,9 +20,14 @@ const Signup = ({navigation}) => {
 
 
     const items = [
-        { label: 'Option 1', value: 'option1' },
-        { label: 'Option 2', value: 'option2' },
-        { label: 'Opt', value: 'option3' },
+        { label: 'Taxi Kurir', value: 'option1' },
+        { label: 'TAXI 97', value: 'option2' },
+        { label: 'TAXI SODER', value: 'option3' },
+        { label: 'TAXI SKANE', value: 'option4' },
+        { label: 'TAXI LUND', value: 'option5' },
+        { label: 'TAXI V', value: 'option6' },
+        { label: 'TAXI MALMO', value: 'option7' },
+        { label: 'SVEATAXI SKANE', value: 'option7' },
       ];
       const handleChange = (item) => {
         setSelectedCompany(item.value);

@@ -55,6 +55,20 @@ export const updatePassword = async (email,newPassword) => {
   }
 };
 
+//Add Report 
+
+export const addReport= async(report)=>{
+  try{
+  const response = await axiosInstance.post(ApiRoutes.addUserReport,report);
+  return response.data;
+  } catch(error){
+    console.error('Error adding report:', error);
+    throw error.response ? error.response.data : new Error('Network error');
+  }
+  };
+
+
+
 
 export const getUser = async () => {
   try {

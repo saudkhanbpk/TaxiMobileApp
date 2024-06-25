@@ -6,6 +6,7 @@ import backIcon from "../../../assets/Images/backIcon.png"
 import {React,useState} from 'react';
 import Button from '../../Button/Button';
 import ReportModal from '../../Addreport_Modal/ReportModal';
+import { addReport } from '../../../api/apiServices';
 
 const Report = ({navigation}) => {
   const [modalVisible, setModalVisible] = useState(false);
@@ -20,17 +21,37 @@ const Report = ({navigation}) => {
     setModalVisible(true);
   };
 
-  const handleSubmit = () => {
+
+  const onSubmit = async () => {
     const newReport = { date, day, cash, card, extraBills };
-    setReports([...reports, newReport]);
-    setModalVisible(false);
-    // Clear the inputs
-    setDate('');
-    setDay('');
-    setCash('');
-    setCard('');
-    setExtraBills('');
+
+    try {
+      const data = await addReport(newReport);
+      console.log('Report submitted successfully:', data);
+      setReports([...reports, newReport]); // Update the state with the new report
+      setModalVisible(false); // Close the modal on success
+      // Clear the inputs
+      setDate('');
+      setDay('');
+      setCash('');
+      setCard('');
+      setExtraBills('');
+    } catch (error) {
+      console.error('Error:', error.message);
+    }
   };
+
+  // const handleSubmit = () => {
+  //   const newReport = { date, day, cash, card, extraBills };
+  //   setReports([...reports, newReport]);
+  //   setModalVisible(false);
+  //   // Clear the inputs
+  //   setDate('');
+  //   setDay('');
+  //   setCash('');
+  //   setCard('');
+  //   setExtraBills('');
+  // };
 
   const renderItem = ({ item }) => (
     <View style={styles.reportItem}>
@@ -74,7 +95,7 @@ const Report = ({navigation}) => {
       <ReportModal
           visible={modalVisible}
           onClose={() => setModalVisible(false)}
-          onSubmit={handleSubmit}
+          onSubmit={onSubmit}
           date={date}
           setDate={setDate}
           day={day}

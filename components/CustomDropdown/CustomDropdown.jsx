@@ -15,7 +15,7 @@ const CustomDropdown = ({ label, data, value, onChange }) => {
         data={data}
         labelField="label"
         valueField="value"
-        placeholder= {t('selectCompany')}
+        placeholder= {t('selectTaxiCompany')}
         value={value}
         onChange={onChange}
         placeholderStyle={styles.placeholderStyle}
@@ -46,6 +46,7 @@ const styles = StyleSheet.create({
   },
   dropdownContainer: {
     backgroundColor: '#9C9B9F',
+    marginBottom:10
    
   },
   placeholderStyle: {

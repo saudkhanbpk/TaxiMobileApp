@@ -1,7 +1,7 @@
 import 'intl';
 import 'intl-pluralrules';
 import 'intl/locale-data/jsonp/en';
-import 'intl/locale-data/jsonp/es';
+import 'intl/locale-data/jsonp/sv';
 import 'intl/locale-data/jsonp/ur';
 import 'intl/locale-data/jsonp/ar';
 
@@ -14,7 +14,7 @@ const languageDetector = {
   type: 'languageDetector',
   async: true,
   detect: (callback) => {
-    const language = 'es'; 
+    const language = 'sv'; 
     callback(language);
   },
   init: () => {},
@@ -58,40 +58,39 @@ const resources = {
 
         },
   },
-  es: {
+  sv: {
     translation: {
-      welcome: 'Bienvenido',
-      changeLanguage: 'Cambiar Idioma',
-      createAccount: 'Crear una cuenta',
-      fullName: 'Nombre completo',
-      enterFullName: 'Ingrese su nombre completo',
-      email: 'Correo electrónico',
-      enterEmail: 'Ingrese su correo electrónico',
-      password: 'Contraseña',
-      enterPassword: 'Ingrese su contraseña',
-      selectTaxiCompany: 'Seleccionar empresa de taxis',
-      selectCompany: 'seleccionar empresa',
-      taxiNumber: 'Número de taxi',
-      enterTaxiNumber: 'Ingrese el número de taxi',
-      signup: 'inscribirse',
-      alreadyHaveAccount: '¿Ya tienes una cuenta?',
-      loginHere: 'Iniciar sesión aquí',
-      letsgetsStarted:"Comencemos",
-      signIn:"acceso",
-      forgotPass:'¿Has olvidado tu contraseña?',
-      titleforgotPass:'Has olvidado tu contraseña',
-      checkEmail:"revisa tu correo electrónico",
-      send:"enviar",
-      areNew:"Eres nuevo?",
-      backtoSignin:'atrás para iniciar sesión',
-      verification:'Verificación',
-      enterVerification:'Ingrese el código de verificación',
-      ifyounotRecieve:'¿Si no recibiste el código?',
-      resend:'Reenviar',
-      newpassword:'Nueva contraseña',
-      enternewPass:'Ingrese nueva clave',
-      confirmPass:'confirmar Contraseña',
-      enterconfirmPass:'Ingrese Confirmar Contraseña'
+      account: 'Konto',
+      changeLanguage: 'Byt språk',
+      createAccount: 'Skapa ett konto',
+      fullName: 'Fullständigt namn',
+      enterFullName: 'Ange ditt fullständiga namn',
+      email: 'E-post',
+      enterEmail: 'Ange din e-post',
+      password: 'Lösenord',
+      enterPassword: 'Ange ditt lösenord',
+      selectTaxiCompany: 'Välj taxiföretag',
+      taxiNumber: 'Taxinummer',
+      enterTaxiNumber: 'Ange taxinumret',
+      signup: 'Registrera',
+      alreadyHaveAccount: 'Har du redan ett konto?',
+      loginHere: 'Logga in här',
+      letsgetsStarted: "Låt oss börja",
+      signIn: "Logga in",
+      forgotPass: "Glömt lösenord?",
+      titleforgotPass: "Glömt lösenord",
+      checkEmail: "Kolla din e-post",
+      send: "Skicka",
+      areNew: "Är du ny?",
+      backtoSignin: 'Tillbaka till inloggning',
+      verification: "Verifiering",
+      enterVerification: "Ange verifieringskod",
+      ifyounotRecieve: "Om du inte mottagit koden?",
+      resend: 'Skicka igen',
+      newpassword: "Nytt lösenord",
+      enternewPass: "Ange nytt lösenord",
+      confirmPass: 'Bekräfta lösenord',
+      enterconfirmPass: 'Ange bekräfta lösenord'
       
     },
   },
@@ -123,7 +122,7 @@ i18n
   .use(initReactI18next)
   .init({
     resources,
-    fallbackLng: 'es',
+    fallbackLng: 'sv',
     interpolation: {
       escapeValue: false,
     },

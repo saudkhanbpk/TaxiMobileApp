@@ -8,7 +8,7 @@ import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-nativ
 
 const languages = [
   { label: 'English', value: 'en' },
-  { label: 'Español', value: 'es' },
+  { label: 'Swedish', value: 'sv' },
   { label: 'العربية', value: 'ar' },
 ];
 

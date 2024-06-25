@@ -11,6 +11,7 @@ import Newpassword from '../Newpassword/Newpassword';
 import TabNavigation from '../TabNavigation/TabNavigation';
 import Home from '../HomeScreen/Home';
 import Report from '../ReportScreen/Report';
+import ViewReport from '../ViewReport/ViewReport';
 
 
 
@@ -19,7 +20,7 @@ const Stack = createNativeStackNavigator();
 const NavigationRoutes = () => {
   return (
     <NavigationContainer>
-    <Stack.Navigator initialRouteName='splash' screenOptions={{ headerShown: false }}>
+    <Stack.Navigator initialRouteName='viewReport' screenOptions={{ headerShown: false }}>
       <Stack.Screen name="splash" component={Splash} />
       <Stack.Screen name="signup" component={Signup} />
       <Stack.Screen name="login" component={Login} />
@@ -29,6 +30,7 @@ const NavigationRoutes = () => {
       <Stack.Screen name="tabNavigation" component={TabNavigation} />
       <Stack.Screen name="home" component={Home} />
       <Stack.Screen name="report" component={Report} />
+      <Stack.Screen name="viewReport" component={ViewReport} />
     </Stack.Navigator>
   </NavigationContainer>
   )

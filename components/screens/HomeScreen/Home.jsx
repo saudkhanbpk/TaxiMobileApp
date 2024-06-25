@@ -32,7 +32,7 @@ const Home = ({navigation}) => {
     <Text style={{fontFamily:"Roboto-Bold",fontSize:25,color:"black",marginTop:20}}>Add Report</Text>
     </View>
     </TouchableOpacity>
-    <TouchableOpacity onPress={()=>navigation.navigate('report')}>
+    <TouchableOpacity onPress={()=>navigation.navigate('viewReport')}>
     <View style={styles.reportBox}>
     <Image source={img5}/>
     <Text style={{fontFamily:"Roboto-Bold",fontSize:25,color:"black",marginTop:20}}>View Report</Text>
